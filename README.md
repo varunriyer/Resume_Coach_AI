@@ -9,6 +9,7 @@ Welcome to the AI Career Coach, a Streamlit-based web application that analyzes 
 - [Configuration](#configuration)
 - [Running the Project](#running-the-project)
 - [Usage](#usage)
+- [Project Details](#project-details)
 - [Troubleshooting](#troubleshooting)
 
 ## Overview
@@ -28,68 +29,71 @@ Ensure your system meets these requirements:
 ## Installation
 
 ### Step 1: Clone the Repository
-1. Open a terminal (Command Prompt on Windows, Terminal on macOS/Linux).
-2. Run the following commands to clone and navigate to the project directory:
 ```bash
 git clone https://github.com/<your-username>/AI-Career-Coach.git
 cd AI-Career-Coach
 ```
 
 ### Step 2: Set Up a Virtual Environment
-1. Create a virtual environment (recommended to isolate dependencies):
 ```bash
 python -m venv venv
 ```
-2. Activate it:
-- On Windows:
-```bash
-venv\Scripts\activate
-```
-- On macOS/Linux:
-```bash
-source venv/bin/activate
-```
+- Activate it:
+    - On Windows:
+    ```bash
+    venv\Scripts\activate
+    ```
+    - On macOS/Linux:
+    ```bash
+    source venv/bin/activate
+    ```
 
 ### Step 3: Install Dependencies
-1. Ensure the virtual environment is activated (you’ll see `(venv)` in the terminal).
-2. Install the required packages:
 ```bash
 pip install -r requirements.txt
 ```
 
 ## Configuration
-The project uses a Groq API key stored in a `.env` file. Follow these steps:
-1. Create a file named `.env` in the `AI-Career-Coach` directory.
-2. Open the `.env` file in a text editor (e.g., Notepad on Windows, TextEdit on macOS).
-3. Add this line, replacing `<your-groq-api-key>` with your actual key from Groq:
-```
+Create a file named `.env` in the `AI-Career-Coach` directory and add:
+```bash
 GROQ_API_KEY=<your-groq-api-key>
 ```
-4. Save and close the file.
 
 > **Note**: Do not share this file or key publicly.
 
 ## Running the Project
-1. Ensure the virtual environment is activated.
-2. Start the application:
 ```bash
 streamlit run main.py
 ```
-3. Open a web browser and go to `http://localhost:8501`.
-
-> Keep the terminal window open while using the app.
+Then visit `http://localhost:8501`.
 
 ## Usage
-1. **Upload Resume**: Select your resume file (PDF, DOCX, or TXT).
-2. **Enter Job Description**: Paste the text or upload a file.
-3. **Select AI Model**: Choose from LLaMA-3, LLaMA2, or Gemma in the sidebar.
-4. **View Analysis**: See your skill match percentage and detailed report.
-5. **Chat with Coach**: Ask questions in the chat interface for personalized advice.
+1. **Upload Resume**: PDF, DOCX, or TXT.
+2. **Enter Job Description**: Paste or upload a file.
+3. **Select AI Model**: LLaMA-3, LLaMA2, or Gemma.
+4. **View Analysis**: Skill match percentage and report.
+5. **Chat with Coach**: Ask questions for personalized advice.
+
+## Project Details
+
+### Functionalities
+- **Resume Parsing**: Uses `DocumentParser` to extract text from resumes.
+- **Skill Matching**: Calculates match % between resume and job description using `utils.py`.
+- **Analysis Report**: Shows matching, missing, and extra skills.
+- **Interactive Chat**: AI-powered advice via the `AICoach` class.
+- **Model Selection**: Choose LLaMA-3, LLaMA2, or Gemma for different styles of analysis.
+
+### How It Works
+- Users upload a resume and job description.
+- Text is extracted using `resume_parser.py`.
+- Skills are extracted and matched using `utils.py`.
+- AI generates a JSON report via the `Groq API` and `AICoach`.
+- `Streamlit` displays all results, including the chat.
 
 ## Troubleshooting
 - **“ModuleNotFoundError”**: Run `pip install -r requirements.txt` again.
-- **API Key Issues**: Check the `.env` file for typos and correct placement.
-- **App Won’t Start**: If port 8501 is busy, try:
+- **API Key Issues**: Check your `.env` file.
+- **App Won’t Start**: Try another port:
 ```bash
 streamlit run main.py --server.port=8502
 ```

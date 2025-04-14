@@ -25,11 +25,15 @@ This document provides an in-depth look at the AI Career Coach project, includin
 - Model selection allows switching between LLaMA-3, LLaMA2, and Gemma.
 
 ## Potential Improvements
-
-- **Skill Extraction**: Use ML/NLP models for better detection.
-- **Error Handling**: More robust error messages in `main.py`.
-- **Performance**: Cache or consider local models for efficiency.
-- **UI Enhancements**: Add progress indicators and responsive layouts.
+- **Skill Extraction**: Enhance `extract_skills` in `utils.py` with machine learning (ML) or natural language processing (NLP) models (e.g., spaCy or BERT) for more accurate and nuanced skill detection.
+- **Error Handling**: Implement more robust error messages in `main.py`, including specific feedback for unsupported file types, API failures, or parsing issues.
+- **Performance**: Introduce caching for frequent API calls or consider integrating local ML models to reduce dependency on external APIs and improve efficiency.
+- **UI Enhancements**: Add progress indicators (e.g., spinners) and responsive layouts to improve user experience during file processing and analysis.
+- **Separation of Frontend and Backend**: Refactor the project to separate the Streamlit frontend from the Python backend (e.g., using FastAPI or Flask), enabling scalability by allowing independent scaling of the UI and processing layers, and supporting future multi-user deployments.
+- **Security Measures**: Implement user session management to ensure one user's uploaded resume or job description is not accessible to others. Consider adding file encryption during upload and storage. In the future, integrate Single Sign-On (SSO) for authenticated access and enhanced security.
+- **Data Validation**: Add input validation for resume and job description files to prevent malformed data from crashing the application.
+- **Offline Mode**: Develop a hybrid mode with pre-trained local models to allow basic functionality without an internet connection, improving accessibility.
+- **Analytics Dashboard**: Include a basic analytics feature to track usage patterns (e.g., most common missing skills) for users, with opt-in data collection and privacy safeguards.
 
 ## Getting Started
 
